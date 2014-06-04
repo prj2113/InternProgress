@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		635FEB48193FC96900F5C0F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB47193FC96900F5C0F4 /* Foundation.framework */; };
-		635FEB4A193FC96900F5C0F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB49193FC96900F5C0F4 /* CoreGraphics.framework */; };
 		635FEB4C193FC96900F5C0F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB4B193FC96900F5C0F4 /* UIKit.framework */; };
 		635FEB52193FC96900F5C0F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 635FEB50193FC96900F5C0F4 /* InfoPlist.strings */; };
 		635FEB54193FC96900F5C0F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 635FEB53193FC96900F5C0F4 /* main.m */; };
@@ -21,6 +20,13 @@
 		635FEB69193FC96900F5C0F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB4B193FC96900F5C0F4 /* UIKit.framework */; };
 		635FEB71193FC96900F5C0F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 635FEB6F193FC96900F5C0F4 /* InfoPlist.strings */; };
 		635FEB73193FC96900F5C0F4 /* Intern_ProgressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635FEB72193FC96900F5C0F4 /* Intern_ProgressTests.m */; };
+		635FEB7C193FCA0600F5C0F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB49193FC96900F5C0F4 /* CoreGraphics.framework */; };
+		635FEB7E193FCA0D00F5C0F4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB7D193FCA0D00F5C0F4 /* CoreLocation.framework */; };
+		635FEB80193FCA1300F5C0F4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB7F193FCA1300F5C0F4 /* CoreTelephony.framework */; };
+		635FEB82193FCA1B00F5C0F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB81193FCA1B00F5C0F4 /* Security.framework */; };
+		635FEB84193FCA2900F5C0F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB83193FCA2900F5C0F4 /* SystemConfiguration.framework */; };
+		635FEB86193FCA3100F5C0F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB85193FCA3100F5C0F4 /* QuartzCore.framework */; };
+		635FEB88193FCE5500F5C0F4 /* ApigeeiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FEB87193FCE5500F5C0F4 /* ApigeeiOSSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		635FEB6E193FC96900F5C0F4 /* Intern ProgressTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Intern ProgressTests-Info.plist"; sourceTree = "<group>"; };
 		635FEB70193FC96900F5C0F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		635FEB72193FC96900F5C0F4 /* Intern_ProgressTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Intern_ProgressTests.m; sourceTree = "<group>"; };
+		635FEB7D193FCA0D00F5C0F4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		635FEB7F193FCA1300F5C0F4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		635FEB81193FCA1B00F5C0F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		635FEB83193FCA2900F5C0F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		635FEB85193FCA3100F5C0F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		635FEB87193FCE5500F5C0F4 /* ApigeeiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ApigeeiOSSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +72,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635FEB4A193FC96900F5C0F4 /* CoreGraphics.framework in Frameworks */,
+				635FEB88193FCE5500F5C0F4 /* ApigeeiOSSDK.framework in Frameworks */,
+				635FEB86193FCA3100F5C0F4 /* QuartzCore.framework in Frameworks */,
+				635FEB84193FCA2900F5C0F4 /* SystemConfiguration.framework in Frameworks */,
+				635FEB82193FCA1B00F5C0F4 /* Security.framework in Frameworks */,
+				635FEB80193FCA1300F5C0F4 /* CoreTelephony.framework in Frameworks */,
+				635FEB7E193FCA0D00F5C0F4 /* CoreLocation.framework in Frameworks */,
+				635FEB7C193FCA0600F5C0F4 /* CoreGraphics.framework in Frameworks */,
 				635FEB4C193FC96900F5C0F4 /* UIKit.framework in Frameworks */,
 				635FEB48193FC96900F5C0F4 /* Foundation.framework in Frameworks */,
 			);
@@ -101,6 +119,12 @@
 		635FEB46193FC96900F5C0F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				635FEB87193FCE5500F5C0F4 /* ApigeeiOSSDK.framework */,
+				635FEB85193FCA3100F5C0F4 /* QuartzCore.framework */,
+				635FEB83193FCA2900F5C0F4 /* SystemConfiguration.framework */,
+				635FEB81193FCA1B00F5C0F4 /* Security.framework */,
+				635FEB7F193FCA1300F5C0F4 /* CoreTelephony.framework */,
+				635FEB7D193FCA0D00F5C0F4 /* CoreLocation.framework */,
 				635FEB47193FC96900F5C0F4 /* Foundation.framework */,
 				635FEB49193FC96900F5C0F4 /* CoreGraphics.framework */,
 				635FEB4B193FC96900F5C0F4 /* UIKit.framework */,
@@ -377,9 +401,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Intern Progress/Intern Progress-Prefix.pch";
 				INFOPLIST_FILE = "Intern Progress/Intern Progress-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,9 +422,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Intern Progress/Intern Progress-Prefix.pch";
 				INFOPLIST_FILE = "Intern Progress/Intern Progress-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

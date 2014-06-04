@@ -12,7 +12,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //Replace 'AppDelegate' with the name of your app delegate class to instantiate it
+    IPAppDelegate *appDelegate = (IPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSString *orgName = @"pjain";
+    NSString *appName = @"internprogress";
+    
+    //Instantiate ApigeeClient to initialize the SDK
+    appDelegate.apigeeClient = [[ApigeeClient alloc]
+                                initWithOrganizationId:orgName
+                                applicationId:appName];
+    
+    //Retrieve instances of ApigeeClient.monitoringClient and ApigeeClient.dataClient
+    self.monitoringClient = [appDelegate.apigeeClient monitoringClient]; //used to call App Monitoring methods
+    self.dataClient = [appDelegate.apigeeClient dataClient]; //used to call data methods
     return YES;
 }
 							
