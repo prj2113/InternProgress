@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 pjain. All rights reserved.
 //
 
-#import "IPViewController.h"
+#import "IPLoginViewController.h"
 
-@interface IPViewController ()
+@interface IPLoginViewController ()
 
 @end
 
-@implementation IPViewController
+@implementation IPLoginViewController
 
 - (void)viewDidLoad
 {
@@ -24,6 +24,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)dismissKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 @end

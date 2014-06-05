@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 pjain. All rights reserved.
 //
 
-@interface IPViewController : UIViewController
+@interface IPLoginViewController : UIViewController
 
 @end
