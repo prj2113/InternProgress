@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IPRegisterViewController : UIViewController
+@interface IPRegisterViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIPickerView *userTypePicker;
+@property (nonatomic, retain) IBOutlet UITextField *fullName;
+@property (nonatomic, retain) IBOutlet UITextField *emailId;
+@property (nonatomic, retain) IBOutlet UITextField *password;
+@property (nonatomic, retain) IBOutlet UILabel *userType;
 
 @end

@@ -26,6 +26,7 @@
     //Retrieve instances of ApigeeClient.monitoringClient and ApigeeClient.dataClient
     self.monitoringClient = [appDelegate.apigeeClient monitoringClient]; //used to call App Monitoring methods
     self.dataClient = [appDelegate.apigeeClient dataClient]; //used to call data methods
+    
     return YES;
 }
 							
