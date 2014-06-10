@@ -16,8 +16,6 @@
 
 @implementation IPMentorMainViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

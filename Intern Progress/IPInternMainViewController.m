@@ -34,7 +34,7 @@
     
     if([response completedSuccessfully])
     {
-        NSMutableDictionary *eachDay=[[NSMutableDictionary alloc] init];;
+        NSMutableDictionary *eachDay=[[NSMutableDictionary alloc] init];
         NSArray *entities = [response valueForKey:@"entities"];
         if([entities count] > 0)
         {
@@ -117,6 +117,10 @@
 - (IBAction)addProgress:(id)sender
 {
     [self performSegueWithIdentifier:@"addProgress" sender:self];
+}
+- (IBAction)shareClicked:(id)sender
+{
+      [self performSegueWithIdentifier:@"manageSharing" sender:self];
 }
 
 /*
