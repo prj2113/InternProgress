@@ -41,7 +41,7 @@
     
     mentors = [[NSMutableArray alloc] init];
     
-    // retrieve followers of this user
+    // retrieve mentors of this user
     ApigeeClientResponse *response = [[apigeeClient dataClient] getEntityConnections:@"users" connectorID:username connectionType:@"mentoredBy" query:nil];
     
     if([response completedSuccessfully])

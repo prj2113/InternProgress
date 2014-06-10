@@ -1,27 +1,29 @@
 //
-//  IPInternMainViewController.m
+//  IPMentorDetailedViewController.m
 //  Intern Progress
 //
-//  Created by Pooja Jain on 6/8/14.
+//  Created by Pooja Jain on 6/10/14.
 //  Copyright (c) 2014 pjain. All rights reserved.
 //
 
-#import "IPInternMainViewController.h"
+#import "IPMentorDetailedViewController.h"
 #import "IPAppDelegate.h"
 
-@interface IPInternMainViewController ()
+@interface IPMentorDetailedViewController ()
 {
     ApigeeClient *apigeeClient;
     IPAppDelegate *appDelegate;
 }
 @end
 
-@implementation IPInternMainViewController
+@implementation IPMentorDetailedViewController
 
-@synthesize progressTableView, sortedProgressDetails;
+@synthesize internUsername, progressTableView, sortedProgressDetails;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     // Do any additional setup after loading the view.
     appDelegate = (IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
@@ -30,7 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     sortedProgressDetails = [[NSMutableArray alloc] init];
-    ApigeeClientResponse *response = [[apigeeClient dataClient] getEntityConnections:@"users" connectorID:appDelegate.username connectionType:@"makes" query:nil];
+    ApigeeClientResponse *response = [[apigeeClient dataClient] getEntityConnections:@"users" connectorID:internUsername connectionType:@"makes" query:nil];
     
     if([response completedSuccessfully])
     {
@@ -60,7 +62,7 @@
                 [sortedEntity setObject:desc forKey:key];
                 [sortedProgressDetails addObject:sortedEntity];
             }
-
+            
         }
         else
         {
@@ -76,13 +78,10 @@
     [progressTableView reloadData];
 }
 
-- (IBAction)Logout:(id)sender
+- (IBAction)BackButtonPressed:(id)sender
 {
-    [[apigeeClient dataClient] logOut];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-#pragma mark - Table view related methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     // Return the number of sections.
@@ -96,29 +95,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"dailyProgressCell";
+    static NSString *cellIdentifier = @"internDetail";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-  
+    
     NSString *date = [[[sortedProgressDetails objectAtIndex:indexPath.row] allKeys] objectAtIndex:0];
     cell.textLabel.text = date;
     cell.detailTextLabel.text = [[sortedProgressDetails objectAtIndex:indexPath.row] valueForKey:date];
     
     return cell;
 }
-- (IBAction)addProgress:(id)sender
-{
-    [self performSegueWithIdentifier:@"addProgress" sender:self];
-}
-- (IBAction)shareClicked:(id)sender
-{
-      [self performSegueWithIdentifier:@"manageSharing" sender:self];
-}
-
 
 
 @end

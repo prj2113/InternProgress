@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IPMentorMainViewController : UIViewController
+@interface IPMentorMainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *internListTableView;
+@property (strong, nonatomic) NSMutableArray *internID;
 
 @end

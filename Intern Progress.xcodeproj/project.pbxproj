@@ -32,6 +32,7 @@
 		63953AC91944541A0078794F /* IPMentorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953AC81944541A0078794F /* IPMentorMainViewController.m */; };
 		63953ACC19466AF20078794F /* IPAddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953ACB19466AF20078794F /* IPAddProgressViewController.m */; };
 		63953ACF19468C490078794F /* IPShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953ACE19468C490078794F /* IPShareViewController.m */; };
+		63953AD21947A1100078794F /* IPMentorDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953AD11947A1100078794F /* IPMentorDetailedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		63953ACB19466AF20078794F /* IPAddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddProgressViewController.m; sourceTree = "<group>"; };
 		63953ACD19468C490078794F /* IPShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPShareViewController.h; sourceTree = "<group>"; };
 		63953ACE19468C490078794F /* IPShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPShareViewController.m; sourceTree = "<group>"; };
+		63953AD01947A1100078794F /* IPMentorDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMentorDetailedViewController.h; sourceTree = "<group>"; };
+		63953AD11947A1100078794F /* IPMentorDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMentorDetailedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				63953ACE19468C490078794F /* IPShareViewController.m */,
 				63953AC71944541A0078794F /* IPMentorMainViewController.h */,
 				63953AC81944541A0078794F /* IPMentorMainViewController.m */,
+				63953AD01947A1100078794F /* IPMentorDetailedViewController.h */,
+				63953AD11947A1100078794F /* IPMentorDetailedViewController.m */,
 				635FEB5F193FC96900F5C0F4 /* Images.xcassets */,
 				635FEB4E193FC96900F5C0F4 /* Supporting Files */,
 			);
@@ -299,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63953AD21947A1100078794F /* IPMentorDetailedViewController.m in Sources */,
 				635FEB54193FC96900F5C0F4 /* main.m in Sources */,
 				635FEB58193FC96900F5C0F4 /* IPAppDelegate.m in Sources */,
 				63953ABF194121FB0078794F /* IPRegisterViewController.m in Sources */,
