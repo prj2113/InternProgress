@@ -30,6 +30,7 @@
 		63953ABF194121FB0078794F /* IPRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953ABE194121FB0078794F /* IPRegisterViewController.m */; };
 		63953AC61944540A0078794F /* IPInternMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953AC51944540A0078794F /* IPInternMainViewController.m */; };
 		63953AC91944541A0078794F /* IPMentorMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953AC81944541A0078794F /* IPMentorMainViewController.m */; };
+		63953ACC19466AF20078794F /* IPAddProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63953ACB19466AF20078794F /* IPAddProgressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		63953AC51944540A0078794F /* IPInternMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPInternMainViewController.m; sourceTree = "<group>"; };
 		63953AC71944541A0078794F /* IPMentorMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMentorMainViewController.h; sourceTree = "<group>"; };
 		63953AC81944541A0078794F /* IPMentorMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMentorMainViewController.m; sourceTree = "<group>"; };
+		63953ACA19466AF20078794F /* IPAddProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddProgressViewController.h; sourceTree = "<group>"; };
+		63953ACB19466AF20078794F /* IPAddProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddProgressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				63953ABE194121FB0078794F /* IPRegisterViewController.m */,
 				63953AC41944540A0078794F /* IPInternMainViewController.h */,
 				63953AC51944540A0078794F /* IPInternMainViewController.m */,
+				63953ACA19466AF20078794F /* IPAddProgressViewController.h */,
+				63953ACB19466AF20078794F /* IPAddProgressViewController.m */,
 				63953AC71944541A0078794F /* IPMentorMainViewController.h */,
 				63953AC81944541A0078794F /* IPMentorMainViewController.m */,
 				635FEB5F193FC96900F5C0F4 /* Images.xcassets */,
@@ -295,6 +300,7 @@
 				63953AC91944541A0078794F /* IPMentorMainViewController.m in Sources */,
 				635FEB5E193FC96900F5C0F4 /* IPLoginViewController.m in Sources */,
 				63953AC61944540A0078794F /* IPInternMainViewController.m in Sources */,
+				63953ACC19466AF20078794F /* IPAddProgressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

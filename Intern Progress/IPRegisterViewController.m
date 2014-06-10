@@ -58,11 +58,11 @@
     switch (row)
     {
         case 0:
-            self.userType.text = @"Intern";
+            userType.text = @"Intern";
             break;
             
         case 1:
-            self.userType.text = @"Mentor";
+            userType.text = @"Mentor";
             break;
     }
 }

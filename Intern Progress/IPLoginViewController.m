@@ -12,7 +12,8 @@
 @interface IPLoginViewController ()
 {
     ApigeeClient *apigeeClient;
-    UIWindow *window;
+    IPAppDelegate *appDelegate;
+
     UIStoryboard *storyboard;
     NSMutableArray *user;
 }
@@ -25,9 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    IPAppDelegate *appDelegate =(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
+    appDelegate =(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
-    window = appDelegate.window;
+
     storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil] ;
     user = [[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -40,14 +41,17 @@
 }
 - (IBAction)Login:(id)sender
 {
-    NSString *usernameValue = self.username.text;
-    NSString *passwordValue = self.password.text;
+    
+    NSString *usernameValue = username.text;
+    NSString *passwordValue = password.text;
     if([usernameValue length] > 0 && [passwordValue length] > 0)
     {
+        
         [[apigeeClient dataClient] logInUser:usernameValue password:passwordValue completionHandler:^(ApigeeClientResponse *response)
         {
             if([response completedSuccessfully])
             {
+                appDelegate.username = usernameValue;
                 ApigeeQuery *query = [[ApigeeQuery alloc] init];
                 [query addRequirement:[NSString stringWithFormat:@"username='%@'",usernameValue]];
                 ApigeeClientResponse *result = [[apigeeClient dataClient] getUsers:query];
@@ -55,7 +59,7 @@
                 if ([result completedSuccessfully])
                 {
                     user = result.response[@"entities"];
-                    NSLog(@"** %@",[user valueForKey:@"userType"]);
+
                     if([[[user valueForKey:@"userType"] objectAtIndex:0] isEqualToString:@"Intern"])
                     {
                         [self performSegueWithIdentifier:@"internSegue" sender:self];
