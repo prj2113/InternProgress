@@ -31,9 +31,19 @@
 
     storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil] ;
     user = [[NSMutableArray alloc] init];
+    
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+     self.navigationController.navigationBarHidden = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

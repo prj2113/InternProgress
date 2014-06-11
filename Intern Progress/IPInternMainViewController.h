@@ -11,5 +11,6 @@
 @interface IPInternMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *progressTableView;
 @property (strong, nonatomic) NSMutableArray *sortedProgressDetails;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

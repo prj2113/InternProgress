@@ -29,6 +29,12 @@
     appDelegate=(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
     mentorUsername = appDelegate.username;
+    
+    [self.navigationBar setBackgroundImage:[UIImage new]
+                             forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
+    self.navigationBar.translucent = YES;
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,6 +107,7 @@
 {
     [[apigeeClient dataClient] logOut];
 }
+
 
 
 @end

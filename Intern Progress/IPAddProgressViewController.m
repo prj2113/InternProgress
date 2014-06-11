@@ -40,7 +40,14 @@
     
     [datePicker addTarget:self  action:@selector(dateChanged:)
          forControlEvents:UIControlEventValueChanged];
+    
+    [self.navigationBar setBackgroundImage:[UIImage new]
+                             forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
+    self.navigationBar.translucent = YES;
+    self.view.backgroundColor = [UIColor clearColor];
 }
+
 - (void)dateChanged:(id)sender
 {
     selectedDate.text =[formatter stringFromDate:datePicker.date];
@@ -66,33 +73,44 @@
     [newProgress setObject:desc forKey:@"description"];
     [newProgress setObject:username forKey:@"username"];
 
-    ApigeeClientResponse *response = [[apigeeClient dataClient] createEntity:newProgress];
-    if([response completedSuccessfully])
+    // if date already exists, then the description is updated.
+    if ([desc length] <=0)
     {
-        NSArray *entity = [response valueForKey:@"entities"];
-        NSString *uuid = [[NSString alloc] init];
-        for(ApigeeEntity *eachEntity in entity)
-        {
-            uuid = [[eachEntity get:@"uuid"] description];
-        }
         
-        ApigeeClientResponse *result = [[apigeeClient dataClient] connectEntities:@"users" connectorID:username connectionType:@"makes" connecteeType:@"progresses" connecteeID:uuid];
-        if([result completedSuccessfully])
+        UIAlertView *descriptionalert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a description" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [descriptionalert show];
+
+    }
+    else
+    {
+        // create new entity in progresses
+        // makea connection from current user to this new entity
+        ApigeeClientResponse *response = [[apigeeClient dataClient] createEntity:newProgress];
+        if([response completedSuccessfully])
         {
-            [self displayAlert:@"Successfully added." title:@"Sucess"];
+            NSArray *entity = [response valueForKey:@"entities"];
+            NSString *uuid = [[NSString alloc] init];
+            for(ApigeeEntity *eachEntity in entity)
+            {
+                uuid = [[eachEntity get:@"uuid"] description];
+            }
+            
+            ApigeeClientResponse *result = [[apigeeClient dataClient] connectEntities:@"users" connectorID:username connectionType:@"makes" connecteeType:@"progresses" connecteeID:uuid];
+            if([result completedSuccessfully])
+            {
+                [self displayAlert:@"Successfully added." title:@"Sucess"];
+            }
+            else
+            {
+                [self displayAlert:@"Progress could not be added. Please Try again." title:@"Error"];
+            }
         }
         else
         {
             [self displayAlert:@"Progress could not be added. Please Try again." title:@"Error"];
         }
     }
-    else
-    {
-        [self displayAlert:@"Progress could not be added. Please Try again." title:@"Error"];
-    }
-    
-    // create new entity in progresses
-    // makea connection from current user to this new entity
 }
 
 - (IBAction)dismissKeyboard:(id)sender

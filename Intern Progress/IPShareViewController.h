@@ -11,5 +11,6 @@
 @interface IPShareViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *sharedWithTableView;
 @property (strong, nonatomic) NSMutableArray *mentors;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

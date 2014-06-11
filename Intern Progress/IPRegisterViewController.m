@@ -29,9 +29,17 @@
     
     IPAppDelegate *appDelegate =(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
+    self.navigationController.navigationBarHidden = NO;
+    
+    [self.navigationItem.leftBarButtonItem setBackgroundImage:[UIImage imageNamed:@"leftButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"rightButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -81,54 +89,72 @@
     NSString *passwordValue = password.text;
     NSString *userTypeValue = userType.text;
     
-    ApigeeQuery *query = [[ApigeeQuery alloc] init];
-    [query addRequirement:[NSString stringWithFormat:@"username='%@'",username]];
-    [[apigeeClient dataClient] getUsers:query completionHandler:^(ApigeeClientResponse *response)
-     {
-        if ([response completedSuccessfully])
-        {
-            if([response.response[@"entities"] count] > 0)
+    // Regular expression to checl the email format.
+    NSString *emailReg = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailReg];
+    if (([emailTest evaluateWithObject:emailValue] != YES) || [emailValue isEqualToString:@""])
+    {
+        UIAlertView *emailalert = [[UIAlertView alloc] initWithTitle:@"Incorrect Email Format" message:@"abc@example.com format" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [emailalert show];
+    }
+    else if([passwordValue length] < 8 || [passwordValue  length]> 30)
+    {
+        UIAlertView *passwordalert = [[UIAlertView alloc] initWithTitle:@"Password incorrect length" message:@"Password can be only between 8 to 30 characters." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [passwordalert show];
+    }
+    else
+    {
+        ApigeeQuery *query = [[ApigeeQuery alloc] init];
+        [query addRequirement:[NSString stringWithFormat:@"username='%@'",username]];
+        [[apigeeClient dataClient] getUsers:query completionHandler:^(ApigeeClientResponse *response)
+         {
+            if ([response completedSuccessfully])
             {
-                [self displayAlert:@"This email id is already taken. Please try logging in or sign up using another email id."];
-            }
-            else
-            {
-                ApigeeClientResponse *result = [[apigeeClient dataClient] addUser:username email:emailValue name:NameValue password:passwordValue];
-                
-                
-                if([result completedSuccessfully])
+                if([response.response[@"entities"] count] > 0)
                 {
-                    //call longInUser to initiate the API call
-                    [[apigeeClient dataClient] logInUser:username password:passwordValue];
-                    @try
-                    {
-                        NSMutableDictionary *updatedentity = [[NSMutableDictionary alloc] init];
-                        [updatedentity setObject:userTypeValue forKey:@"userType"];
-                        [updatedentity setObject:@"users" forKey:@"type"];
-                        [[apigeeClient dataClient] updateEntity:username entity:updatedentity];
-                        [self displayAlert:@"User added successfully. Please login with these details."];
-                        [[apigeeClient dataClient] logOut];
-
-                    }
-                    @catch (NSException * e)
-                    {
-                        [self displayAlert:@"Authentication failed."];
-                    }
+                    [self displayAlert:@"This email id is already taken. Please try logging in or sign up using another email id."];
                 }
                 else
                 {
-                    // Log (or display) a message.
-                    ApigeeLogError(@"AddUser", @"Error while adding new user.");
-                    [self displayAlert:@"User could not be added. Please try again."];
+                    ApigeeClientResponse *result = [[apigeeClient dataClient] addUser:username email:emailValue name:NameValue password:passwordValue];
+                    
+                    
+                    if([result completedSuccessfully])
+                    {
+                        //call longInUser to initiate the API call
+                        [[apigeeClient dataClient] logInUser:username password:passwordValue];
+                        @try
+                        {
+                            NSMutableDictionary *updatedentity = [[NSMutableDictionary alloc] init];
+                            [updatedentity setObject:userTypeValue forKey:@"userType"];
+                            [updatedentity setObject:@"users" forKey:@"type"];
+                            [[apigeeClient dataClient] updateEntity:username entity:updatedentity];
+                            [self displayAlert:@"User added successfully. Please login with these details."];
+                            [[apigeeClient dataClient] logOut];
+
+                        }
+                        @catch (NSException * e)
+                        {
+                            [self displayAlert:@"Authentication failed."];
+                        }
+                    }
+                    else
+                    {
+                        // Log (or display) a message.
+                        ApigeeLogError(@"AddUser", @"Error while adding new user.");
+                        [self displayAlert:@"User could not be added. Please try again."];
+                    }
                 }
             }
-        }
-        else
-        {
-            ApigeeLogError(@"getAppUsers", @"Error while getting user data.");
-        }
-        
-    }];
+            else
+            {
+                ApigeeLogError(@"getAppUsers", @"Error while getting user data.");
+            }
+            
+        }];
+    }
 }
 
 

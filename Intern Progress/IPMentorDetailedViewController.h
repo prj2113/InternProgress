@@ -11,5 +11,6 @@
 @interface IPMentorDetailedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *progressTableView;
 @property (strong, nonatomic) NSMutableArray *sortedProgressDetails;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) NSString *internUsername;
 @end

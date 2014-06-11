@@ -11,5 +11,6 @@
 @interface IPMentorMainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *internListTableView;
 @property (strong, nonatomic) NSMutableArray *internID;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

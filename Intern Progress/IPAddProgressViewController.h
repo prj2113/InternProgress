@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet UITextView *description;
 @property (strong, nonatomic) IBOutlet UILabel *selectedDate;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

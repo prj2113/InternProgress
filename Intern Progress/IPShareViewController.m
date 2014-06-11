@@ -33,6 +33,13 @@
     
     //sharedWithTableView.allowsMultipleSelectionDuringEditing = NO;
     
+    [self.navigationBar setBackgroundImage:[UIImage new]
+                             forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
+    self.navigationBar.translucent = YES;
+    self.view.backgroundColor = [UIColor clearColor];
+
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
