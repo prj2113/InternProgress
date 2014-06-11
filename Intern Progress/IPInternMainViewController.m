@@ -18,7 +18,10 @@
 
 @implementation IPInternMainViewController
 
+#pragma mark initialization
 @synthesize progressTableView, sortedProgressDetails;
+
+#pragma mark View Managing methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,8 +34,6 @@
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,10 +85,7 @@
     [progressTableView reloadData];
 }
 
-- (IBAction)Logout:(id)sender
-{
-    [[apigeeClient dataClient] logOut];
-}
+
 
 
 #pragma mark - Table view related methods
@@ -117,6 +115,12 @@
     cell.detailTextLabel.text = [[sortedProgressDetails objectAtIndex:indexPath.row] valueForKey:date];
     
     return cell;
+}
+
+#pragma mark Methods based on user actions
+- (IBAction)Logout:(id)sender
+{
+    [[apigeeClient dataClient] logOut];
 }
 - (IBAction)addProgress:(id)sender
 {

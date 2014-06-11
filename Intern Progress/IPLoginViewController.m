@@ -21,7 +21,10 @@
 
 @implementation IPLoginViewController
 
+#pragma mark initialization
 @synthesize username, password;
+
+#pragma mark View Managing methods
 
 - (void)viewDidLoad
 {
@@ -40,18 +43,11 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     
 }
--(void)viewDidAppear:(BOOL)animated
-{
-     self.navigationController.navigationBarHidden = YES;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+#pragma mark Methods based on user actions
 - (IBAction)Login:(id)sender
 {
-    
     NSString *usernameValue = username.text;
     NSString *passwordValue = password.text;
     if([usernameValue length] > 0 && [passwordValue length] > 0)

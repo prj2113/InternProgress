@@ -154,9 +154,9 @@
 		635FEB4D193FC96900F5C0F4 /* Intern Progress */ = {
 			isa = PBXGroup;
 			children = (
+				635FEB59193FC96900F5C0F4 /* Main.storyboard */,
 				635FEB56193FC96900F5C0F4 /* IPAppDelegate.h */,
 				635FEB57193FC96900F5C0F4 /* IPAppDelegate.m */,
-				635FEB59193FC96900F5C0F4 /* Main.storyboard */,
 				635FEB5C193FC96900F5C0F4 /* IPLoginViewController.h */,
 				635FEB5D193FC96900F5C0F4 /* IPLoginViewController.m */,
 				63953ABD194121FB0078794F /* IPRegisterViewController.h */,

@@ -18,8 +18,10 @@
 
 @implementation IPMentorDetailedViewController
 
+#pragma mark initialization
 @synthesize internUsername, progressTableView, sortedProgressDetails;
 
+#pragma mark View Managing methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -83,10 +85,9 @@
     [progressTableView reloadData];
 }
 
-- (IBAction)BackButtonPressed:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
+
+#pragma mark - Table view related methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     // Return the number of sections.
@@ -115,5 +116,10 @@
     return cell;
 }
 
+#pragma mark Methods based on user actions
+- (IBAction)BackButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

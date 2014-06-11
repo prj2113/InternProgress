@@ -19,8 +19,10 @@
 
 @implementation IPRegisterViewController
 
+#pragma mark initialization
 @synthesize fullName, emailId, password, userType;
 
+#pragma mark View Managing methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -29,22 +31,14 @@
     
     IPAppDelegate *appDelegate =(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
-    self.navigationController.navigationBarHidden = NO;
+  
     
     [self.navigationItem.leftBarButtonItem setBackgroundImage:[UIImage imageNamed:@"leftButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"rightButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    self.navigationController.navigationBarHidden = NO;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark Picker Related methods
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -75,10 +69,8 @@
     }
 }
 
-- (IBAction)dismissKeyboard:(id)sender
-{
-    [self.view endEditing:YES];
-}
+
+#pragma mark Methods based on user actions
 
 - (IBAction)AddUser:(id)sender
 {
@@ -194,15 +186,9 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)dismissKeyboard:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self.view endEditing:YES];
 }
-*/
 
 @end

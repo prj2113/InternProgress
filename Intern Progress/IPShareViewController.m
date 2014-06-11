@@ -22,8 +22,10 @@
 
 @implementation IPShareViewController
 
+#pragma mark initialization
 @synthesize sharedWithTableView, mentors;
 
+#pragma mark View Managing methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -100,7 +102,48 @@
     return cell;
 }
 
+/*
+ 
+ // Override to support conditional editing of the table view.
+ // This only needs to be implemented if you are going to be returning NO
+ // for some items. By default, all items are editable.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return YES if you want the specified item to be editable.
+ return YES;
+ }
+ 
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete)
+ {
+ UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+ NSString *mentorEmailId = cell.textLabel.text;
+ 
+ ApigeeQuery *query = [[ApigeeQuery alloc] init];
+ [query addRequirement:[NSString stringWithFormat:@"username='%@'",mentorEmailId]];
+ ApigeeClientResponse *response = [[apigeeClient dataClient] getUsers:query];
+ if ([response completedSuccessfully])
+ {
+ if([response.response[@"entities"] count] > 0)
+ {
+ NSString *Mentoruuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
+ 
+ ApigeeClientResponse *r3=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:Mentoruuid];
+ ApigeeClientResponse *r4=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:Mentoruuid type:@"mentoring" connecteeID:username];
+ [self viewWillAppear:YES];
+ }
+ }
+ else
+ {
+ alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"could'nt delete mentor" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+ [alert show];
+ }
+ }
+ }
+ */
 
+#pragma mark Methods based on user actions
 
 - (IBAction)BackButton:(id)sender
 {
@@ -145,46 +188,7 @@
     }
 }
 
-/*
 
-// Override to support conditional editing of the table view.
-// This only needs to be implemented if you are going to be returning NO
-// for some items. By default, all items are editable.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        NSString *mentorEmailId = cell.textLabel.text;
-        
-        ApigeeQuery *query = [[ApigeeQuery alloc] init];
-        [query addRequirement:[NSString stringWithFormat:@"username='%@'",mentorEmailId]];
-        ApigeeClientResponse *response = [[apigeeClient dataClient] getUsers:query];
-        if ([response completedSuccessfully])
-        {
-            if([response.response[@"entities"] count] > 0)
-            {
-                NSString *Mentoruuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
-              
-                ApigeeClientResponse *r3=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:Mentoruuid];
-                ApigeeClientResponse *r4=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:Mentoruuid type:@"mentoring" connecteeID:username];
-                [self viewWillAppear:YES];
-            }
-        }
-        else
-        {
-            alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"could'nt delete mentor" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }
-    }
-}
-*/
 - (BOOL)validateUser:(NSString *)mentorEmailId
 {
     ApigeeQuery *query = [[ApigeeQuery alloc] init];

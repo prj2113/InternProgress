@@ -20,8 +20,10 @@
 
 @implementation IPMentorMainViewController
 
+#pragma mark initialization
 @synthesize internID, internListTableView;
 
+#pragma mark View Managing methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -103,6 +105,7 @@
     [self presentViewController:detailVC animated:YES completion:nil];
 }
 
+#pragma mark Methods based on user actions
 - (IBAction)Logout:(id)sender
 {
     [[apigeeClient dataClient] logOut];
