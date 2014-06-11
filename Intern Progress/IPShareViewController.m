@@ -31,8 +31,7 @@
     apigeeClient = appDelegate.apigeeClient;
     username = appDelegate.username;
     
-    // During startup (-viewDidLoad or in storyboard) do:
-    sharedWithTableView.allowsMultipleSelectionDuringEditing = NO;
+    //sharedWithTableView.allowsMultipleSelectionDuringEditing = NO;
     
 }
 
@@ -126,8 +125,8 @@
          // validate that the entered email id is a mentor,
         if([self validateUser:mentorEmailId])
         {
-            [[apigeeClient dataClient] connectEntities:@"user" connectorID:username connectionType:@"mentoredBy" connecteeType:@"users" connecteeID:mentorEmailId];
-            [[apigeeClient dataClient] connectEntities:@"user" connectorID:mentorEmailId connectionType:@"mentoring" connecteeType:@"users" connecteeID:username];
+            [[apigeeClient dataClient] connectEntities:@"users" connectorID:username connectionType:@"mentoredBy" connecteeType:@"users" connecteeID:mentorEmailId];
+            [[apigeeClient dataClient] connectEntities:@"users" connectorID:mentorEmailId connectionType:@"mentoring" connecteeType:@"users" connecteeID:username];
             [self viewWillAppear:YES];
             
         }
@@ -139,7 +138,7 @@
     }
 }
 
-
+/*
 
 // Override to support conditional editing of the table view.
 // This only needs to be implemented if you are going to be returning NO
@@ -164,9 +163,10 @@
         {
             if([response.response[@"entities"] count] > 0)
             {
-                NSString *uuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
-                [[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:uuid];
-                [[apigeeClient dataClient] disconnectEntities:@"users" connectorID:mentorEmailId type:@"mentoring" connecteeID:username];
+                NSString *Mentoruuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
+              
+                ApigeeClientResponse *r3=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:Mentoruuid];
+                ApigeeClientResponse *r4=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:Mentoruuid type:@"mentoring" connecteeID:username];
                 [self viewWillAppear:YES];
             }
         }
@@ -177,7 +177,7 @@
         }
     }
 }
-
+*/
 - (BOOL)validateUser:(NSString *)mentorEmailId
 {
     ApigeeQuery *query = [[ApigeeQuery alloc] init];

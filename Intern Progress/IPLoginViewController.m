@@ -59,7 +59,7 @@
                 if ([result completedSuccessfully])
                 {
                     user = result.response[@"entities"];
-
+                    appDelegate.uuid = [user valueForKey:@"uuid"];
                     if([[[user valueForKey:@"userType"] objectAtIndex:0] isEqualToString:@"Intern"])
                     {
                         [self performSegueWithIdentifier:@"internSegue" sender:self];

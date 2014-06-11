@@ -16,4 +16,5 @@
 @property (strong, nonatomic) ApigeeDataClient *dataClient;	//client object for data methods
 
 @property (strong,nonatomic,retain) NSString *username;
+@property (strong,nonatomic,retain) NSString *uuid;
 @end
