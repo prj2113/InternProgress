@@ -32,14 +32,15 @@
     appDelegate = (IPAppDelegate *)[[UIApplication sharedApplication]delegate];
     apigeeClient = appDelegate.apigeeClient;
     username = appDelegate.username;
-    
-    //sharedWithTableView.allowsMultipleSelectionDuringEditing = NO;
+
     
     [self.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
+    
+    sharedWithTableView.allowsMultipleSelectionDuringEditing = NO;
 
     
 }
@@ -47,6 +48,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     
+    sharedWithTableView.delegate = self;
+    sharedWithTableView.dataSource = self;
     mentors = [[NSMutableArray alloc] init];
     
     // retrieve mentors of this user
@@ -102,52 +105,45 @@
     return cell;
 }
 
-/*
- 
- // Override to support conditional editing of the table view.
- // This only needs to be implemented if you are going to be returning NO
- // for some items. By default, all items are editable.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return YES if you want the specified item to be editable.
- return YES;
- }
+#pragma mark Deleting Row methods
  
  // Override to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
  {
- if (editingStyle == UITableViewCellEditingStyleDelete)
- {
- UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
- NSString *mentorEmailId = cell.textLabel.text;
- 
- ApigeeQuery *query = [[ApigeeQuery alloc] init];
- [query addRequirement:[NSString stringWithFormat:@"username='%@'",mentorEmailId]];
- ApigeeClientResponse *response = [[apigeeClient dataClient] getUsers:query];
- if ([response completedSuccessfully])
- {
- if([response.response[@"entities"] count] > 0)
- {
- NSString *Mentoruuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
- 
- ApigeeClientResponse *r3=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:Mentoruuid];
- ApigeeClientResponse *r4=[[apigeeClient dataClient] disconnectEntities:@"users" connectorID:Mentoruuid type:@"mentoring" connecteeID:username];
- [self viewWillAppear:YES];
+     if (editingStyle == UITableViewCellEditingStyleDelete)
+     {
+         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+         NSString *mentorEmailId = cell.textLabel.text;
+         NSString *internUuid  = appDelegate.uuid;
+         ApigeeQuery *query = [[ApigeeQuery alloc] init];
+         [query addRequirement:[NSString stringWithFormat:@"username='%@'",mentorEmailId]];
+         ApigeeClientResponse *response = [[apigeeClient dataClient] getUsers:query];
+         if ([response completedSuccessfully])
+         {
+             if([response.response[@"entities"] count] > 0)
+             {
+                 NSString *Mentoruuid = [[response.response[@"entities"] objectAtIndex:0] valueForKey:@"uuid"];
+                 // works on terminal , make it work through app
+                 [[apigeeClient dataClient] disconnectEntities:@"users" connectorID:username type:@"mentoredBy" connecteeID:Mentoruuid];
+                 [[apigeeClient dataClient] disconnectEntities:@"users" connectorID:Mentoruuid type:@"mentoring" connecteeID:internUuid];
+                 [self viewWillAppear:YES];
+                 
+             }
+         }
+         else
+         {
+             alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"could'nt delete mentor" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+             [alert show];
+         }
+     }
  }
- }
- else
- {
- alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"could'nt delete mentor" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
- [alert show];
- }
- }
- }
- */
+
 
 #pragma mark Methods based on user actions
 
 - (IBAction)BackButton:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)AddNewMentor:(id)sender

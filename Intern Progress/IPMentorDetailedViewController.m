@@ -50,16 +50,13 @@
             for (ApigeeEntity *eachEntity in entities)
             {
                 
-                NSString *date = [[NSString alloc] init];
-                NSString *desc = [[NSString alloc] init];
-                date = [[eachEntity get:@"date"] description];
-                desc = [[eachEntity get:@"description"] description];
+                NSString *date = [[eachEntity get:@"date"] description];
+                NSString *desc =[[eachEntity get:@"description"] description];
                 [eachDay setValue:desc forKey:date];
             }
             
             //sort view on date
-            NSArray *keys = [[NSArray alloc] init];
-            keys = [eachDay allKeys];
+            NSArray *keys = [eachDay allKeys];
             NSArray *sortedKeys = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             
             for(NSString *key in sortedKeys)

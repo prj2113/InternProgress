@@ -11,9 +11,9 @@
 @interface IPRegisterViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIPickerView *userTypePicker;
-@property (nonatomic, retain) IBOutlet UITextField *fullName;
-@property (nonatomic, retain) IBOutlet UITextField *emailId;
-@property (nonatomic, retain) IBOutlet UITextField *password;
-@property (nonatomic, retain) IBOutlet UILabel *userType;
+@property (nonatomic) IBOutlet UITextField *fullName;
+@property (nonatomic) IBOutlet UITextField *emailId;
+@property (nonatomic) IBOutlet UITextField *password;
+@property (nonatomic) IBOutlet UILabel *userType;
 
 @end

@@ -359,10 +359,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="nHE-8M-mzr" id="5uL-rM-vLc"/>
-                                    <outlet property="delegate" destination="nHE-8M-mzr" id="ztY-cT-Qrg"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -378,7 +374,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Share View Controller-->
         <scene sceneID="B8X-CK-DRZ">
             <objects>
-                <viewController id="Htf-Vd-HdY" customClass="IPShareViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IPShareViewController" id="Htf-Vd-HdY" customClass="IPShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oht-Ul-CDa"/>
                         <viewControllerLayoutGuide type="bottom" id="Mgk-Pk-Est"/>
@@ -401,7 +397,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Shared With" id="6NW-79-Dw1">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="lbe-TY-A3o">
+                                        <barButtonItem key="leftBarButtonItem" id="lbe-TY-A3o">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3U9-LU-wtl">
                                                 <rect key="frame" x="16" y="5" width="60" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -415,7 +411,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="x3q-fR-ysZ">
+                                        <barButtonItem key="rightBarButtonItem" id="x3q-fR-ysZ">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZMO-KK-xhc">
                                                 <rect key="frame" x="244" y="5" width="60" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -455,10 +451,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Htf-Vd-HdY" id="fB0-PU-3GJ"/>
-                                    <outlet property="delegate" destination="Htf-Vd-HdY" id="Ii8-lg-clN"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -594,7 +586,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Mentor" id="kmX-fy-Gin">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bfx-3T-oUm">
+                                        <barButtonItem key="rightBarButtonItem" id="Bfx-3T-oUm">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="viz-LA-fn8">
                                                 <rect key="frame" x="244" y="5" width="60" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -680,7 +672,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Intern Progress" id="9wI-9j-6P9">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="VsL-Uu-iAa">
+                                        <barButtonItem key="leftBarButtonItem" id="VsL-Uu-iAa">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iRZ-Ru-ZkE">
                                                 <rect key="frame" x="16" y="5" width="60" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -759,6 +751,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bGe-81-0Mo"/>
+        <segue reference="vSb-b4-soy"/>
     </inferredMetricsTieBreakers>
 </document>
