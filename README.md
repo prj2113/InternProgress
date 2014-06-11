@@ -9,14 +9,10 @@ Using the app
 Clone the repository into your computer. Open the file Intern Progress.xcodeproj in Xcode and run the project.
 To try out the app, you can use the following demo users:
 
-  Intern user 
-  ===========
-  username: intern@demo.com
-  password: interndemo
+	username: intern@demo.com
+	password: interndemo
 
-  Mentor user
-  ===========
-  username: mentor@demo.com
-  password: mentordemo
+	username: mentor@demo.com
+	password: mentordemo
   
 You can also register as a new user.
