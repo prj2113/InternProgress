@@ -1,6 +1,3 @@
-InternProgress
-==============
-
 About the app
 =============
 This is an iOS app to be used by the mentors and interns during internship. It lets the mentor and intern share a progress 
