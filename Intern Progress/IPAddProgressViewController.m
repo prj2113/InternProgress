@@ -25,6 +25,9 @@
 @synthesize selectedDate,datePicker, description;
 
 #pragma mark View Managing methods
+/*
+ This method is called whenever a view is loaded for the first time
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
