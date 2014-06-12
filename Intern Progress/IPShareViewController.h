@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// The class implements the tableView protocols and text field protocols
 @interface IPShareViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *sharedWithTableView;
-@property (strong, nonatomic) NSMutableArray *mentors;
+
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+
+@property (strong, nonatomic) NSMutableArray *mentors; // it stores the list of mentors which are used to populate the tableview
 
 @end

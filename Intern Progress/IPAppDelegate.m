@@ -12,16 +12,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //Replace 'AppDelegate' with the name of your app delegate class to instantiate it
     IPAppDelegate *appDelegate = (IPAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *orgName = @"pjain";
-    NSString *appName = @"internprogress";
+    // Register on developers.apigee.com to get your own credentials
+    NSString *orgName = @"pjain"; //organization name
+    NSString *appName = @"internprogress"; //app name
     
     //Instantiate ApigeeClient to initialize the SDK
-    appDelegate.apigeeClient = [[ApigeeClient alloc]
-                                initWithOrganizationId:orgName
-                                applicationId:appName];
+    appDelegate.apigeeClient = [[ApigeeClient alloc] initWithOrganizationId:orgName applicationId:appName];
     
     //Retrieve instances of ApigeeClient.monitoringClient and ApigeeClient.dataClient
     self.monitoringClient = [appDelegate.apigeeClient monitoringClient]; //used to call App Monitoring methods

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface IPAddProgressViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;  // PickerView to allow user to pick date
+
 @property (strong, nonatomic) IBOutlet UITextView *description;
 @property (strong, nonatomic) IBOutlet UILabel *selectedDate;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;

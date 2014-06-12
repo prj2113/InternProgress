@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+// The class implements the tableView protocols
 @interface IPMentorMainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *internListTableView;
-@property (strong, nonatomic) NSMutableArray *internID;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) NSMutableArray *internID;  // it stores the list of interns which are used to populate the tableview
 
 @end

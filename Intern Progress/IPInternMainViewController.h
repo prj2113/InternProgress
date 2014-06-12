@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// The class implements the tableView protocols
 @interface IPInternMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *progressTableView;
-@property (strong, nonatomic) NSMutableArray *sortedProgressDetails;
+
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+
+@property (strong, nonatomic) NSMutableArray *sortedProgressDetails; // stores the content to populate the table view
 
 @end

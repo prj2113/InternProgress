@@ -12,7 +12,7 @@
 @interface IPAddProgressViewController ()
 {
     NSString *formatString;
-    NSDateFormatter *formatter;
+    NSDateFormatter *formatter; // to set the date format
     ApigeeClient *apigeeClient;
     IPAppDelegate *appDelegate;
     NSString *username;
@@ -29,10 +29,16 @@
 {
     [super viewDidLoad];
     
+    // create an instance of IPAppDelegate.
     appDelegate =(IPAppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    // assigns apigeeClient to the instance of apigeeClient in app delegate.
     apigeeClient = appDelegate.apigeeClient;
+    
+    // get the username of the logged in user.
     username = appDelegate.username;
     
+    // set the date format
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     formatString = [NSDateFormatter dateFormatFromTemplate:@"dMMMyyyy" options:0 locale:usLocale];
     formatter = [[NSDateFormatter alloc] init];
@@ -43,6 +49,7 @@
     [datePicker addTarget:self  action:@selector(dateChanged:)
          forControlEvents:UIControlEventValueChanged];
     
+    // Customize the navigation bar
     [self.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
@@ -53,15 +60,26 @@
 
 
 #pragma mark Methods based on user actions
+
+/*
+ This method is called when a user clicks on the Back button.
+ */
 - (IBAction)BackButton:(id)sender
 {
+    // dismiss this view controller and show intern main page
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+/*
+ This method is called when a user clicks on the Add button.
+ */
 - (IBAction)AddNewProgress:(id)sender
 {
     NSString *date = selectedDate.text;
     NSString *desc = description.text;
     NSMutableDictionary *newProgress = [[NSMutableDictionary alloc] init];
+    
+    // set properties of new progress.
     [newProgress setObject:@"progresses" forKey:@"type"];
     [newProgress setObject:date forKey:@"date"];
     [newProgress setObject:desc forKey:@"description"];
@@ -70,7 +88,6 @@
     // if date already exists, then the description is updated.
     if ([desc length] <=0)
     {
-        
         UIAlertView *descriptionalert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a description" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [descriptionalert show];
@@ -79,17 +96,19 @@
     else
     {
         // create new entity in progresses
-        // makea connection from current user to this new entity
         ApigeeClientResponse *response = [[apigeeClient dataClient] createEntity:newProgress];
         if([response completedSuccessfully])
         {
             NSArray *entity = [response valueForKey:@"entities"];
             NSString *uuid = [[NSString alloc] init];
+            
             for(ApigeeEntity *eachEntity in entity)
             {
+                // get uuid of new entity.
                 uuid = [[eachEntity get:@"uuid"] description];
             }
             
+            // create a "makes" connection from current user to this new entity i.e. progress
             ApigeeClientResponse *result = [[apigeeClient dataClient] connectEntities:@"users" connectorID:username connectionType:@"makes" connecteeType:@"progresses" connecteeID:uuid];
             if([result completedSuccessfully])
             {
@@ -107,16 +126,24 @@
     }
 }
 
+
 - (void)dateChanged:(id)sender
 {
     selectedDate.text =[formatter stringFromDate:datePicker.date];
 }
 
+/*
+ dismisses the keyboard when user clicks anywhere outside the text field.
+ */
 - (IBAction)dismissKeyboard:(id)sender
 {
     [self.view endEditing:YES];
 }
 
+
+/*
+ Displays an alert message.
+ */
 - (void)displayAlert:(NSString *)message title:(NSString *)title
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
@@ -131,6 +158,10 @@
     }
     
 }
+
+/*
+ When Ok button is clicked on the alert box for successful addition
+ */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(alertView.tag== 3 && buttonIndex==0)
