@@ -16,3 +16,8 @@ To try out the app, you can use the following demo users:
 	password: mentordemo
   
 You can also register as a new user.
+
+Walkthrough of all user stories:
+![Video Walkthrough](InternProgress.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
